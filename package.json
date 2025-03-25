@@ -46,7 +46,6 @@
   },
   "dependencies": {
     "@tensorflow/tfjs-node": "^4.22.0",
-    "@u4/opencv4nodejs": "^7.1.2",
     "canvas": "^3.1.0",
     "face-api.js": "^0.22.2",
     "fluent-ffmpeg": "^2.1.3",
