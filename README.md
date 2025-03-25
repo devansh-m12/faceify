@@ -1,62 +1,99 @@
-# Faceify
+# Faceify 🎬
 
 [![npm version](https://img.shields.io/npm/v/@devansh-m12/faceify.svg)](https://www.npmjs.com/package/@devansh-m12/faceify)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Downloads](https://img.shields.io/npm/dt/@devansh-m12/faceify.svg)](https://www.npmjs.com/package/@devansh-m12/faceify)
 
-A smart video converter that transforms landscape videos to mobile-friendly vertical format with intelligent face detection. Faceify automatically tracks faces in your videos and creates perfect vertical crops optimized for mobile viewing.
+<div align="center">
+  <img src="./public/logo.webp" alt="Faceify Logo" width="200"/>
+  <p><em>Transform landscape videos to mobile-friendly vertical format with intelligent face tracking</em></p>
+</div>
 
-## Features
+## 🎥 Demo
 
-- Convert landscape videos to mobile-friendly 9:16 vertical format
-- Intelligent face detection and tracking
-- Dynamic cropping that follows faces and important content
-- High-quality video processing using FFmpeg
-- Customizable output dimensions
-- TypeScript support
+<div align="center">
+  <table>
+    <tr>
+      <td align="center"><strong>Before</strong></td>
+      <td align="center"><strong>After</strong></td>
+    </tr>
+    <tr>
+      <td>
+        <a href="./public/before.mp4">
+          <img src="./public/before_thumbnail.png" alt="Before conversion" width="320"/>
+          <br>View Video
+        </a>
+      </td>
+      <td>
+        <a href="./public/after.mp4">
+          <img src="./public/after_thumbnail.png" alt="After conversion" width="180"/>
+          <br>View Video
+        </a>
+      </td>
+    </tr>
+  </table>
+</div>
 
-## Prerequisites
+## ✨ Features
 
-Before installing Faceify, ensure you have the following prerequisites:
+- 📱 Convert landscape videos to mobile-friendly 9:16 vertical format
+- 👁️ Intelligent face detection and tracking
+- 🎯 Dynamic cropping that follows faces and important content
+- 🔄 High-quality video processing using FFmpeg
+- 📐 Customizable output dimensions
+- 📝 TypeScript support
 
-1. **Node.js** (version 14 or higher)
+## 🚀 Installation
 
-2. **FFmpeg** installed on your system:
-   - **macOS**: Install using Homebrew with `brew install ffmpeg`
-   - **Ubuntu/Debian**: Install with `sudo apt-get install ffmpeg`
-   - **Windows**: Download from [FFmpeg.org](https://ffmpeg.org/download.html) and add to PATH
+### Prerequisites
 
-3. **Build tools**:
-   - **macOS**: Install Xcode command line tools: `xcode-select --install`
-   - **Ubuntu/Debian**: `sudo apt-get install build-essential libcairo2-dev libpango1.0-dev libjpeg-dev libgif-dev librsvg2-dev`
-   - **Windows**: Install Visual Studio Build Tools with C++ workload
+Before installing Faceify, ensure you have the following:
 
-## Installation
+<details>
+<summary><strong>1. Node.js</strong> (version 14 or higher)</summary>
+<br>
+Download from <a href="https://nodejs.org">nodejs.org</a>
+</details>
 
-Install Faceify via npm:
+<details>
+<summary><strong>2. FFmpeg</strong> installed on your system</summary>
+<br>
+<ul>
+  <li><strong>macOS</strong>: <code>brew install ffmpeg</code></li>
+  <li><strong>Ubuntu/Debian</strong>: <code>sudo apt-get install ffmpeg</code></li>
+  <li><strong>Windows</strong>: Download from <a href="https://ffmpeg.org/download.html">FFmpeg.org</a> and add to PATH</li>
+</ul>
+</details>
+
+<details>
+<summary><strong>3. Build tools</strong></summary>
+<br>
+<ul>
+  <li><strong>macOS</strong>: <code>xcode-select --install</code></li>
+  <li><strong>Ubuntu/Debian</strong>: <code>sudo apt-get install build-essential libcairo2-dev libpango1.0-dev libjpeg-dev libgif-dev librsvg2-dev</code></li>
+  <li><strong>Windows</strong>: Install Visual Studio Build Tools with C++ workload</li>
+</ul>
+</details>
+
+### Install Package
 
 ```bash
+# Using npm
 npm install @devansh-m12/faceify
-```
 
-Or using yarn:
-
-```bash
+# Using yarn
 yarn add @devansh-m12/faceify
-```
 
-Or using pnpm:
-
-```bash
+# Using pnpm
 pnpm add @devansh-m12/faceify
 ```
 
-## Usage
+## 📖 Usage
 
-Basic example:
+### Basic Example
 
 ```typescript
 import { MobileVideoConverter } from '@devansh-m12/faceify';
-import * as path from 'path';
 
 async function convertVideo() {
   try {
@@ -84,9 +121,9 @@ async function convertVideo() {
 convertVideo();
 ```
 
-## API Reference
+## 🛠️ API Reference
 
-### MobileVideoConverter
+### `MobileVideoConverter`
 
 The main class for converting videos.
 
@@ -96,7 +133,7 @@ The main class for converting videos.
 new MobileVideoConverter(options?: VideoConverterOptions)
 ```
 
-##### VideoConverterOptions
+#### `VideoConverterOptions`
 
 | Option | Type | Default | Description |
 |--------|------|---------|-------------|
@@ -107,14 +144,14 @@ new MobileVideoConverter(options?: VideoConverterOptions)
 
 #### Methods
 
-##### convertVideo(inputPath: string): Promise<ConversionResult>
+##### `convertVideo(inputPath: string): Promise<ConversionResult>`
 
 Converts a video to mobile-friendly vertical format.
 
 - **inputPath**: Path to the video file to convert
 - **Returns**: Promise that resolves to a ConversionResult object
 
-##### ConversionResult
+##### `ConversionResult`
 
 | Property | Type | Description |
 |----------|------|-------------|
@@ -122,20 +159,49 @@ Converts a video to mobile-friendly vertical format.
 | `convertedPath` | string | Path to the converted video file |
 | `faces` | Array<{x: number, y: number, width: number, height: number}> | Information about detected faces |
 
-## How It Works
+## 🧠 How It Works
 
-Faceify uses advanced computer vision and video processing techniques to intelligently convert landscape videos to vertical format:
+<div align="center">
+  <img src="./public/workflow.png" alt="Faceify Workflow" width="700"/>
+</div>
 
-1. **Face Detection**: Uses TensorFlow.js and face-api.js to detect and track faces throughout the video.
-2. **Scene Analysis**: Identifies important scene changes to create optimal crop points.
-3. **Dynamic Cropping**: Creates a smooth cropping timeline that follows faces and important content.
-4. **Video Processing**: Uses FFmpeg to create high-quality output videos with proper aspect ratio.
+Faceify uses advanced computer vision and video processing techniques:
 
-## Advanced Usage
+1. **Face Detection**: Uses TensorFlow.js and face-api.js to detect and track faces throughout the video
+2. **Scene Analysis**: Identifies important scene changes to create optimal crop points
+3. **Dynamic Cropping**: Creates a smooth cropping timeline that follows faces and important content
+4. **Video Processing**: Uses FFmpeg to create high-quality output videos with proper aspect ratio
+
+## 🔍 Unique Face Recognition Technology
+
+### Advanced Face Detection and Tracking
+
+Faceify stands apart with its sophisticated face recognition algorithm that:
+
+- **Multi-Face Recognition**: Intelligently identifies and tracks multiple faces simultaneously in complex scenes
+- **Facial Landmark Detection**: Maps 68 distinct points on each face to analyze orientation, emotion, and prominence
+- **Smart Priority System**: Automatically prioritizes primary speakers or subjects based on screen time and position
+- **Temporal Consistency**: Maintains smooth transitions between scenes by analyzing facial movements across frames
+
+### Intelligent Dynamic Cropping
+
+Unlike basic center-crop solutions, Faceify's approach is truly adaptive:
+
+- **Content-Aware Analysis**: Examines not just faces but also motion vectors and visual saliency
+- **Predictive Tracking**: Anticipates face movements to position the frame optimally before they occur
+- **Edge-Case Handling**: Gracefully manages challenging scenarios like rapid movements, multiple subjects, or subjects leaving frame
+- **Aesthetic Composition**: Maintains proper headroom and leading space based on cinematography principles
+
+### Technical Implementation
+
+- **Real-time Processing Pipeline**: Optimized frame-by-frame analysis with minimal performance overhead
+- **Configurable Sensitivity**: Fine-tune face detection confidence thresholds for your specific content
+- **Hardware Acceleration**: Leverages GPU when available for faster processing on compatible systems
+- **Fallback Logic**: Employs scene-based cropping when faces aren't detected, ensuring quality results in all scenarios
+
+## 🔧 Advanced Usage
 
 ### Custom Dimensions
-
-You can specify custom dimensions for the output video:
 
 ```typescript
 const converter = new MobileVideoConverter({
@@ -148,31 +214,49 @@ const converter = new MobileVideoConverter({
 
 ### Disable Face Detection
 
-If you want to convert videos without face detection (using center cropping):
-
 ```typescript
 const converter = new MobileVideoConverter({
   outputDirectory: './converted-videos',
-  detectFaces: false  // Disable face detection
+  detectFaces: false  // Disable face detection (uses center cropping)
 });
 ```
 
-## Troubleshooting
+## ❓ Troubleshooting
 
-### Common Issues
+<details>
+<summary><strong>Missing FFmpeg</strong></summary>
+<br>
+Ensure FFmpeg is properly installed and in your system PATH. Verify by running <code>ffmpeg -version</code> in your terminal.
+</details>
 
-1. **Missing FFmpeg**: Ensure FFmpeg is properly installed and in your system PATH.
-2. **Build Errors**: Make sure you have the necessary build tools installed for your platform.
-3. **Memory Issues**: For large videos, increase the Node.js memory limit: `node --max-old-space-size=4096 your-script.js`
+<details>
+<summary><strong>Build Errors</strong></summary>
+<br>
+Make sure you have the necessary build tools installed for your platform. Check the prerequisites section for details.
+</details>
 
-### Debug Logs
+<details>
+<summary><strong>Memory Issues</strong></summary>
+<br>
+For large videos, increase the Node.js memory limit: <code>node --max-old-space-size=4096 your-script.js</code>
+</details>
 
-If you're experiencing issues, check the console logs for detailed error messages that can help diagnose problems.
-
-## Contributing
+## 🤝 Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
-## License
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-This project is licensed under the MIT License - see the LICENSE file for details. 
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+<div align="center">
+  <p>Made with ❤️ by <a href="https://github.com/devansh-m12">Devansh</a></p>
+</div>

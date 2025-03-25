@@ -29,13 +29,6 @@ lib-cov
 coverage
 .nyc_output
 
-# dotenv environment variables file
-.env
-.env.test
-.env.local
-.env.development
-.env.production
-
 # IDEs and editors
 .idea/
 .vscode/
