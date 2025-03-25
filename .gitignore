@@ -6,7 +6,7 @@ jspm_packages/
 *.tsbuildinfo
 
 # Build output
-# dist/ - Commented out to allow publishing with GitHub Actions
+dist/
 build/
 out/
 
