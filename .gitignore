@@ -6,7 +6,7 @@ jspm_packages/
 *.tsbuildinfo
 
 # Build output
-dist/
+# dist/ - Commented out to allow publishing with GitHub Actions
 build/
 out/
 
@@ -49,4 +49,5 @@ converted-videos/
 *.mp4
 *.mov
 *.avi
-*.mkv 
+*.mkv
+
