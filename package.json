@@ -1,6 +1,6 @@
 {
   "name": "@devansh-m12/faceify",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Smart video converter that transforms landscape videos to mobile-friendly vertical format with face detection",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

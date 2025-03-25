@@ -125,7 +125,7 @@ export class MobileVideoConverter {
 
   constructor(options: VideoConverterOptions = {}) {
     this.options = {
-      outputDirectory: options.outputDirectory || './converted-videos',
+      outputDirectory: options.outputDirectory || path.resolve('./converted-videos'),
       targetWidth: options.targetWidth || 1080,
       targetHeight: options.targetHeight || 1920,
       detectFaces: options.detectFaces ?? true
@@ -134,6 +134,12 @@ export class MobileVideoConverter {
     // Ensure output directory exists
     if (!fs.existsSync(this.options.outputDirectory)) {
       fs.mkdirSync(this.options.outputDirectory, { recursive: true });
+    }
+    
+    // Also create segments directory in advance
+    const segmentsDir = path.join(this.options.outputDirectory, 'segments');
+    if (!fs.existsSync(segmentsDir)) {
+      fs.mkdirSync(segmentsDir, { recursive: true });
     }
   }
 
@@ -630,8 +636,12 @@ export class MobileVideoConverter {
     faceTimeline?: Array<{timestamp: number, faces: Array<{x: number, y: number, width: number, height: number}>}>,
     videoInfo?: { width: number, height: number, duration: number }
   ): Promise<void> {
+    if (!videoInfo) {
+      videoInfo = await this.getVideoInfo(inputPath);
+    }
+    
     // If no face timeline or no faces detected, use the old method
-    if (!faceTimeline || faceTimeline.length === 0 || !videoInfo) {
+    if (!faceTimeline || faceTimeline.length === 0) {
       return this.processVideoForMobile(inputPath, outputPath, undefined, videoInfo);
     }
     
@@ -674,8 +684,8 @@ export class MobileVideoConverter {
       // We'll split the video into segments, crop each one differently, then concatenate
       console.log('Creating segmented crop with', smoothedCropTimeline.length, 'segments');
       
-      // Create temporary directory for segments
-      const segmentsDir = path.join(this.options.outputDirectory, 'segments');
+      // Create temporary directory for segments - use absolute path
+      const segmentsDir = path.resolve(path.join(this.options.outputDirectory, 'segments'));
       if (!fs.existsSync(segmentsDir)) {
         fs.mkdirSync(segmentsDir, { recursive: true });
       }
@@ -748,10 +758,10 @@ export class MobileVideoConverter {
       try {
         const segmentPaths = await Promise.all(segmentationScript);
         
-        // Create a list file for concatenation
-        const listFilePath = path.join(segmentsDir, 'segments.txt');
+        // Create a list file for concatenation - ensure absolute paths for better compatibility
+        const listFilePath = path.resolve(path.join(segmentsDir, 'segments.txt'));
         const listContent = segmentPaths
-          .map(p => `file '${p}'`)
+          .map(p => `file '${path.resolve(p)}'`)
           .join('\n');
         
         fs.writeFileSync(listFilePath, listContent);

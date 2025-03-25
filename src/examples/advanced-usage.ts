@@ -22,7 +22,7 @@ async function advancedConversionExample() {
     });
 
     // Path to input video (replace with your video path)
-    const inputVideoPath = path.join(__dirname, '../../podcast.mp4');
+    const inputVideoPath = path.join(__dirname, '../../public/before.mp4');
 
     console.log('Starting video conversion with face detection...');
     console.time('Conversion Time');

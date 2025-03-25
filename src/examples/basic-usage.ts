@@ -10,7 +10,7 @@ async function convertVideoExample() {
     });
 
     // Path to input video (replace with your video path)
-    const inputVideoPath = path.join(__dirname, '../../podcast.mp4');
+    const inputVideoPath = path.join(__dirname, '../../public/before.mp4');
 
     // Convert video
     const result = await converter.convertVideo(inputVideoPath);
