@@ -1,0 +1,38 @@
+# Source code
+src/
+*.ts
+!*.d.ts
+
+# Development files
+tsconfig.json
+.env
+pnpm-lock.yaml
+package-lock.json
+*.tgz
+*.log
+
+# Test files
+tests/
+test/
+__tests__/
+*.test.ts
+*.spec.ts
+
+# Assets
+podcast.mp4
+converted-videos/
+
+# IDE & OS specific files
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# CI/CD
+.github/
+.gitlab/
+.travis.yml
+.circleci/
+
+# Ensure dist is not ignored
+!dist/ 

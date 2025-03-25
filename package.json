@@ -1,0 +1,58 @@
+{
+  "name": "@devansh-m12/faceify",
+  "version": "1.0.0",
+  "description": "Smart video converter that transforms landscape videos to mobile-friendly vertical format with face detection",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "start": "ts-node src/examples/basic-usage.ts",
+    "prepublishOnly": "npm run build",
+    "test": "ts-node src/examples/basic-usage.ts",
+    "prepare": "npm run build"
+  },
+  "keywords": [
+    "video",
+    "converter",
+    "mobile",
+    "vertical",
+    "face-detection",
+    "video-processing",
+    "ffmpeg",
+    "tensorflow",
+    "face-api"
+  ],
+  "author": "d3v1sh",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/devansh-m12/faceify.git"
+  },
+  "homepage": "https://github.com/devansh-m12/faceify#readme",
+  "bugs": {
+    "url": "https://github.com/devansh-m12/faceify/issues"
+  },
+  "devDependencies": {
+    "@types/fluent-ffmpeg": "^2.1.27",
+    "@types/node": "^22.13.13",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.2"
+  },
+  "dependencies": {
+    "@tensorflow/tfjs-node": "^4.22.0",
+    "@u4/opencv4nodejs": "^7.1.2",
+    "canvas": "^3.1.0",
+    "face-api.js": "^0.22.2",
+    "fluent-ffmpeg": "^2.1.3",
+    "sharp": "^0.33.5"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "packageManager": "pnpm@9.15.4+sha512.b2dc20e2fc72b3e18848459b37359a32064663e5627a51e4c74b2c29dd8e8e0491483c3abb40789cfd578bf362fb6ba8261b05f0387d76792ed6e23ea3b1b6a0"
+}
